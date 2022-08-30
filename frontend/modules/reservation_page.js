@@ -33,60 +33,61 @@ function addReservationToTable(reservations) {
     1. The date of adventure booking should appear in the format D/MM/YYYY (en-IN format) Example:  4/11/2020 denotes 4th November, 2020
     2. The booking time should appear in a format like 4 November 2020, 9:32:31 pm
   */
-  let table= document.getElementById("reservation-table");
-  reservations.forEach( i=> {
+  let table = document.getElementById("reservation-table");
+  let res = reservations.reverse();
+  res.forEach(i => {
     // let a= document.createElement("a");
-    let row= document.createElement("tr");
+    let row = document.createElement("tr");
     // row.setAttribute("id", i.id);
 
-    let id= document.createElement("td");
-    id.innerHTML= i.id;
+    let id = document.createElement("td");
+    id.innerHTML = i.id;
     row.append(id);
-    
-    let name= document.createElement("td");
-    name.innerHTML= i.name;
+
+    let name = document.createElement("td");
+    name.innerHTML = i.name;
     row.append(name);
 
-    let adventureName= document.createElement("td");
-    adventureName.innerHTML= i.adventureName;
+    let adventureName = document.createElement("td");
+    adventureName.innerHTML = i.adventureName;
     row.append(adventureName);
-    
-    let person= document.createElement("td");
-    person.innerHTML= i.person;
+
+    let person = document.createElement("td");
+    person.innerHTML = i.person;
     row.append(person);
 
-    let date= document.createElement("td");
-    let d= new Date(i.date)
-    date.innerHTML= d.toLocaleDateString('en-IN');
+    let date = document.createElement("td");
+    let d = new Date(i.date)
+    date.innerHTML = d.toLocaleDateString('en-IN');
     row.append(date);
 
-    let price= document.createElement("td");
-    price.innerHTML= i.price;
+    let price = document.createElement("td");
+    price.innerHTML = i.price;
     row.append(price);
 
 
-    let time= document.createElement("td");
-    let t= new Date(i.time)
-    const optionsa = {  year: 'numeric', month: 'long', day: 'numeric' };
-    time.innerHTML= t.toLocaleDateString('en-IN', optionsa)+','+ ' ' + t.toLocaleTimeString('en-IN');
+    let time = document.createElement("td");
+    let t = new Date(i.time)
+    const optionsa = { year: 'numeric', month: 'long', day: 'numeric' };
+    time.innerHTML = t.toLocaleDateString('en-IN', optionsa) + ',' + ' ' + t.toLocaleTimeString('en-IN');
     row.append(time);
 
 
-    let btn= document.createElement("a");
-    let div= document.createElement("div");
+    let btn = document.createElement("a");
+    let div = document.createElement("div");
     div.setAttribute("id", i.id);
     btn.classList.add("reservation-visit-button");
     btn.classList.add("mt-2");
     btn.setAttribute("type", "button");
     btn.setAttribute("href", `../detail/?adventure=${i.adventure}`);
-    btn.innerHTML= "Visit Adventure";
+    btn.innerHTML = "Visit Adventure";
     div.append(btn)
     row.append(div);
 
     // a.append(row);
     table.append(row)
-    
-  }) 
+
+  })
 }
 
 export { fetchReservations, addReservationToTable };
