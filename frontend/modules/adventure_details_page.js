@@ -45,7 +45,7 @@ function addBootstrapPhotoGallery(images) {
   // TODO: MODULE_ADVENTURE_DETAILS
   // 1. Add the bootstrap carousel to show the Adventure images
   let div = document.createElement("div");
-  let carousel = `<div id="carouselExampleIndicators" class="carousel slide" data-ride>
+  let carousel = `<div id="carouselExampleIndicators" class="carousel slide" data-bs-ride = "carousel">
   <div class="carousel-indicators">
 </div>
   <div class="carousel-inner">
@@ -68,7 +68,7 @@ function addBootstrapPhotoGallery(images) {
     div.classList.add("carousel-item");
     let img = document.createElement("img");
     img.setAttribute("src", i);
-    img.setAttribute("class", "d-block w-100 activity-card-image");
+    img.setAttribute("class", "activity-card-image");
     div.append(img);
     wrapper.append(div);
     inner.innerHTML = inner.innerHTML + wrapper.innerHTML;
