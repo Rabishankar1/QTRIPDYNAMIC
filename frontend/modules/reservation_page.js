@@ -34,12 +34,13 @@ function addReservationToTable(reservations) {
     2. The booking time should appear in a format like 4 November 2020, 9:32:31 pm
   */
   let table = document.getElementById("reservation-table");
-  let res = reservations.reverse();
-  res.forEach(i => {
-    // let a= document.createElement("a");
+  let t = reservations.sort((a, b) => {
+    let c = new Date(a.time);
+    let d = new Date(b.time);
+    return d - c;
+  })
+  t.forEach(i => {
     let row = document.createElement("tr");
-    // row.setAttribute("id", i.id);
-
     let id = document.createElement("td");
     id.innerHTML = i.id;
     row.append(id);
@@ -78,15 +79,14 @@ function addReservationToTable(reservations) {
     div.setAttribute("id", i.id);
     btn.classList.add("reservation-visit-button");
     btn.classList.add("mt-2");
+    btn.classList.add("text-light");
     btn.setAttribute("type", "button");
     btn.setAttribute("href", `../detail/?adventure=${i.adventure}`);
     btn.innerHTML = "Visit Adventure";
-    div.append(btn)
+    div.append(btn);
+    
     row.append(div);
-
-    // a.append(row);
     table.append(row)
-
   })
 }
 
