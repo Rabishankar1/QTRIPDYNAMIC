@@ -84,9 +84,13 @@ function addReservationToTable(reservations) {
     btn.setAttribute("href", `../detail/?adventure=${i.adventure}`);
     btn.innerHTML = "Visit Adventure";
     div.append(btn);
-    
+
     row.append(div);
-    table.append(row)
+    let tripDate = new Date(i.date);
+    let now = new Date();
+    if(tripDate.getTime()> now.getTime()) {
+      table.append(row);
+    }
   })
 }
 
